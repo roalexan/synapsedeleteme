@@ -23,12 +23,12 @@
             }
         }
     },
-    "resources":[],
     "variables": {
       "withoutCmk": "{}",
       "withCmk": "[concat('{\"cmk\":{\"key\":{\"name\":\"default\", \"keyVaultUrl\":\"', parameters('keyVaultKeyUri'), '\"}}}')]",
       "encryption": "[json(if(empty(parameters('keyVaultKeyUri')), variables('withoutCmk'), variables('withCmk')))]"
     },
+    "resources":[],
     "outputs": {
       "keyVaultKeyUri": {
         "type": "String",
