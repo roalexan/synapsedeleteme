@@ -55,7 +55,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[uri(deployment().properties.templateLink.uri, '/Azure-Samples/Synapse/master/Manage/DeployWorkspace/workspace/azuredeploy.json')]",
+          "uri": "https://raw.githubusercontent.com/roalexan/Synapse/main/Manage/DeployWorkspace/workspace/azuredeploy.json",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -74,7 +74,9 @@
           "tagValues": {
             "value": "[parameters('tagValues')]"
           },
-          "encryption": "woof"
+          "encryption": {
+            "value": "[variables('encryption')]"
+          }
         }
       },
       "dependsOn": [
