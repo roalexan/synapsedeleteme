@@ -35,7 +35,7 @@
         "value": "[parameters('keyVaultKeyUri')]"
       },
       "encryption": {
-        "type": "object",
+        "type": "Object",
         "value": "[variables('encryption')]"
       }
     }
