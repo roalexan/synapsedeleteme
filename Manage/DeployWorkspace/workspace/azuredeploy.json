@@ -65,7 +65,7 @@
     "outputs": {
         "encryption": {
           "type": "Object",
-          "value": "[variables('encryption')]"
+          "value": "[parameters('encryption')]"
         }
       }
 }
