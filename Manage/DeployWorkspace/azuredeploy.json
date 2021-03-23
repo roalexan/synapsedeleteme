@@ -29,9 +29,9 @@
       "encryption": "[json(if(empty(parameters('keyVaultKeyUri')), variables('withoutCmk'), variables('withCmk')))]"
     },
     "outputs": {
-      "encryption": {
-        "type": "object",
-        "value": "[variables('encryption')]"
+      "keyVaultKeyUri": {
+        "type": "String",
+        "value": "[parameters('keyVaultKeyUri')]"
       }
     }
 }
