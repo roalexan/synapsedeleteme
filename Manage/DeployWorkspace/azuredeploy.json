@@ -23,6 +23,7 @@
             }
         }
     },
+    "resources":[],
     "variables": {
       "withoutCmk": "{}",
       "withCmk": "[concat('{\"cmk\":{\"key\":{\"name\":\"default\", \"keyVaultUrl\":\"', parameters('keyVaultKeyUri'), '\"}}}')]",
