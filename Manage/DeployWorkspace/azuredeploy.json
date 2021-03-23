@@ -74,7 +74,7 @@
           "tagValues": {
             "value": "[parameters('tagValues')]"
           },
-          "encryption": "[variables('encryption')]"
+          "encryption": "woof"
         }
       },
       "dependsOn": [
