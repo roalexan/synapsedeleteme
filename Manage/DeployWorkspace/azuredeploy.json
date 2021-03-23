@@ -28,45 +28,10 @@
       "withCmk": "[concat('{\"cmk\":{\"key\":{\"name\":\"default\", \"keyVaultUrl\":\"', parameters('keyVaultKeyUri'), '\"}}}')]",
       "encryption": "[json(if(empty(parameters('keyVaultKeyUri')), variables('withoutCmk'), variables('withCmk')))]"
     },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2018-05-01",
-            "name": "storage",
-            "properties": {
-              "mode": "Incremental",
-              "templateLink": {
-                "uri": "[uri(deployment().properties.templateLink.uri, '/Azure-Samples/Synapse/master/Manage/DeployWorkspace/storage/azuredeploy.json')]",
-                "contentVersion": "1.0.0.0"
-              },
-              "parameters":{
-                "storageAccount":{"value": "[replace(parameters('name'),'-','')]"}
-              }
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2018-05-01",
-            "name": "workspace",
-            "properties": {
-              "mode": "Incremental",
-              "templateLink": {
-                "uri": "[uri(deployment().properties.templateLink.uri, '/Azure-Samples/Synapse/master/Manage/DeployWorkspace/workspace/azuredeploy.json')]",
-                "contentVersion": "1.0.0.0"
-              },
-              "parameters":{
-                "name":{"value": "[parameters('name')]"},
-                "sqlAdministratorLogin":{"value": "[parameters('sqlAdministratorLogin')]"},
-                "sqlAdministratorPassword":{"value": "[parameters('sqlAdministratorPassword')]"},
-                "defaultDataLakeStorageAccountName":{"value": "[replace(parameters('name'),'-','')]"},
-                "tagValues":{"value": "[parameters('tagValues')]"},
-                "encryption": "[variables('encryption')]"
-              }
-            },
-            "dependsOn": [
-                "storage"
-            ]
-        }
-    ],
-    "outputs": {}
+    "outputs": {
+      "encryption": {
+        "type": "object",
+        "value": "[variables('encryption')]"
+      }
+    }
 }
